@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 bg-light">
+                <h2 style="margin-top:15px;">Regístrate</h2>
+                {% with messages = get_flashed_messages(category_filter=['registro']) %}
+                    {% if messages %}
+                        <div class="alert alert-danger">
+                            {% for message in messages %}
+                                <p>{{message}}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+
+                
+                <form action="/registrate" method="post" class="mx-auto" class="form-control" >
+                <div class="form-group">
+                    <label for="first_name">Nombre</label>
+                    <input type="text" id="first_name" name="first_name" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label for="last_name">Apellido</label>
+                    <input type="text" id="last_name" name="last_name" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label for="password">Introduce una contraseña</label>
+                    <input type="password" id="password" name="password" class="form-control" >
+                </div>
+                <div class="form-group ">
+                    <label for="confirm_password">Repite la contraseña</label> 
+                    <input type="password" id="confirm_password" name="confirm_password" class="form-control" >
+                </div>
+                
+                <div class="form-check  mt-3">
+                    <input class="form-check-input" type="checkbox" id="checkData"   name="checkData"> 
+                    <label class="form-check-label" for="checkDates">
+                    Autorizo el tratamiento de mis datos bajo su <a href="#">política de tratamiento de datos</a>
+                    </label>
+                </div>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="checkbox" id="checkTerms"  name="checkTerms"> 
+                    <label class="form-check-label" for="checkTerms">
+                    <a href="#">Acepto Terminos y condiciones</a>
+                    </label>
+                </div>
+                
+                <input type="submit" value="Crear Cuenta" class="btn btn-primary mt-3" >
+                </form>
+
+            </div>
+
+            <div class="col-6 bg-light">
+                <h2 style="margin-top:15px;">Inicia Sesión</h2>
+                {% with messages = get_flashed_messages(category_filter=['login']) %}
+                    {% if messages %}
+                        <div class="alert alert-danger">
+                            {% for message in messages %}
+                                <p>{{message}}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                <div >
+                    <form action="/login" method="post" class="mx-auto">
+                        <div>
+                            <label for="email_2">Email</label>
+                            <input type="text" id="email_2" name="email" class="form-control" required>
+                        </div>
+                        <div>
+                            <label for="password_2">Contraseña</label>
+                            <input type="password" id="password_2" name="password" class="form-control" required>
+                        </div>
+                        <input type="submit" value="Iniciar sesión" class="btn btn-primary" style="margin-top:15px;">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
